@@ -77,16 +77,20 @@ body {
     transform: translateY(45px);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap');
+
 .feeling-lucky {
-    font-family: 'Amalfi Coast', cursive;
-    font-size: 1.6em;
+    font-family: "Qwitcher Grypen", cursive !important;
+    font-weight: 400;
+    font-size: 2.8em;
     color: black;
-    transform: rotate(-13deg) translateX(-35px) translateY(25px);
+    transform: rotate(-13deg) translateX(-50px) translateY(25px);
     cursor: pointer;
     text-shadow: 0 0 8px rgba(0, 0, 0, 1);
     transition: text-shadow 0.3s ease;
     user-select: none;
     animation: pulse-glow 1.5s ease-in-out infinite alternate;
+    letter-spacing: 2pt;
 }
 
 .feeling-lucky:hover {
@@ -238,8 +242,9 @@ input::placeholder {
     }
     
     .feeling-lucky {
-        font-size: 1.5em;
-        transform: rotate(-13deg) translateX(-30px) translateY(20px);
+        font-size: 2.6em;
+        transform: rotate(-13deg) translateX(-45px) translateY(20px);
+        letter-spacing: 2pt;
     }
     
     input {
@@ -279,8 +284,9 @@ input::placeholder {
     }
     
     .feeling-lucky {
-        font-size: 1.4em;
-        transform: rotate(-13deg) translateX(-25px) translateY(15px);
+        font-size: 2.4em;
+        transform: rotate(-13deg) translateX(-40px) translateY(15px);
+        letter-spacing: 2pt;
     }
     
     input {
