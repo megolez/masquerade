@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Dancing Script', cursive;
+    height: 100vh;
+    overflow: hidden;
+    background-color: white;
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card background images - centered and same size */
+.card-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 400px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+#page1 .card-background, #page2 .card-background {
+    background-image: url('card.png');
+}
+
+#page3 .card-background {
+    background-image: url('finalpage.jpeg');
+}
+
+/* Content overlay */
+.card-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(10px);
+}
+
+.heart-image {
+    max-width: 160px;
+    max-height: 160px;
+    margin-bottom: 30px;
+    transform: translateY(35px);
+}
+
+.feeling-lucky {
+    font-family: 'Amalfi Coast', cursive;
+    font-size: 1.2em;
+    color: black;
+    transform: rotate(-13deg) translateX(-30px) translateY(20px);
+    cursor: pointer;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 1);
+    transition: text-shadow 0.3s ease;
+    user-select: none;
+    animation: pulse-glow 1.5s ease-in-out infinite alternate;
+}
+
+.feeling-lucky:hover {
+    text-shadow: 0 0 25px rgba(0, 0, 0, 1);
+}
+
+@keyframes pulse-glow {
+    0% {
+        text-shadow: 0 0 8px rgba(0, 0, 0, 1);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(0, 0, 0, 1), 0 0 30px rgba(0, 0, 0, 0.8);
+    }
+}
+
+/* Page 2 Styles */
+#rsvpForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.input-group {
+    position: relative;
+}
+
+input {
+    background: transparent;
+    border: 0.5px solid black;
+    border-radius: 2px 1px 3px 1px;
+    padding: 6px 8px;
+    font-size: 10px;
+    width: 150px;
+    outline: none;
+    font-family: 'Times New Roman', serif;
+    letter-spacing: 2pt;
+    position: relative;
+    color: black;
+    box-shadow: 
+        0 0 0 0.3px rgba(0, 0, 0, 0.2),
+        inset 0.2px 0.2px 0 rgba(0, 0, 0, 0.1),
+        inset -0.2px -0.2px 0 rgba(0, 0, 0, 0.1);
+    transform: rotate(0.2deg);
+}
+
+input:nth-child(odd) {
+    transform: rotate(-0.3deg);
+    border-radius: 1px 3px 1px 2px;
+}
+
+input:nth-child(even) {
+    transform: rotate(0.4deg);
+    border-radius: 3px 1px 2px 1px;
+}
+
+input::placeholder {
+    color: black;
+    font-family: 'Times New Roman', serif;
+    letter-spacing: 2pt;
+    font-size: 10px;
+}
+
+.get-in-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.2s ease;
+}
+
+.get-in-button:hover {
+    transform: scale(1.05);
+}
+
+.get-in-text {
+    font-weight: bold;
+    font-size: 10px;
+    color: black;
+    font-family: 'Times New Roman', serif;
+    letter-spacing: 2pt;
+}
+
+.arrow {
+    font-size: 10px;
+    color: black;
+    font-weight: bold;
+    font-family: 'Times New Roman', serif;
+}
+
+/* Page 3 Styles */
+.final-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wax-seal {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    z-index: 3;
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wax-seal.animate {
+    opacity: 1;
+    animation: stamp 0.8s ease-out;
+}
+
+.wax-seal img {
+    max-width: 150px;
+    max-height: 150px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes stamp {
+    0% {
+        transform: translateX(-50%) scale(0) rotate(0deg) translateY(-50px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(-50%) scale(1.2) rotate(180deg) translateY(-10px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateX(-50%) scale(1) rotate(360deg) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card-background {
+        width: 280px;
+        height: 380px;
+    }
+    
+    .heart-image {
+        max-width: 130px;
+        max-height: 130px;
+        transform: translateY(30px);
+    }
+    
+    .feeling-lucky {
+        font-size: 1.1em;
+        transform: rotate(-13deg) translateX(-25px) translateY(15px);
+    }
+    
+    input {
+        width: 130px;
+        font-size: 9px;
+        padding: 5px 7px;
+    }
+    
+    .get-in-text {
+        font-size: 9px;
+    }
+    
+    .arrow {
+        font-size: 9px;
+    }
+    
+    .wax-seal {
+        top: 28%;
+    }
+    
+    .wax-seal img {
+        max-width: 120px;
+        max-height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-background {
+        width: 250px;
+        height: 340px;
+    }
+    
+    .heart-image {
+        max-width: 110px;
+        max-height: 110px;
+        margin-bottom: 25px;
+        transform: translateY(25px);
+    }
+    
+    .feeling-lucky {
+        font-size: 1em;
+        transform: rotate(-13deg) translateX(-20px) translateY(10px);
+    }
+    
+    input {
+        width: 120px;
+        font-size: 8px;
+        padding: 4px 6px;
+    }
+    
+    #rsvpForm {
+        gap: 12px;
+    }
+    
+    .get-in-text {
+        font-size: 8px;
+    }
+    
+    .arrow {
+        font-size: 8px;
+    }
+    
+    .wax-seal {
+        top: 30%;
+    }
+    
+    .wax-seal img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+}

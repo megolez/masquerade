@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party RSVP</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amalfi+Coast&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Page 1 -->
+    <div id="page1" class="page active">
+        <div class="card">
+            <div class="card-background"></div>
+            <div class="card-content">
+                <img src="heart_lighter.png" alt="Heart" class="heart-image">
+                <div class="feeling-lucky" onclick="goToPage2()">feeling lucky?</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div id="page2" class="page">
+        <div class="card">
+            <div class="card-background"></div>
+            <div class="card-content">
+                <form id="rsvpForm">
+                    <div class="input-group">
+                        <input type="text" id="firstName" placeholder="First Name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="lastName" placeholder="Last Name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="get-in-button" onclick="goToPage3()">
+                        <span class="get-in-text">Get in</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div id="page3" class="page">
+        <div class="final-card">
+            <div class="card-background"></div>
+            <div id="waxSeal" class="wax-seal">
+                <img src="waxseal.png" alt="Wax Seal">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
