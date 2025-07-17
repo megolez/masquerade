@@ -7,10 +7,13 @@ function goToPage2() {
 }
 
 function goToPage3() {
-    const form = document.getElementById('rsvpForm');
+    console.log('goToPage3 function called');
+    
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
     const email = document.getElementById('email').value;
+    
+    console.log('Form data:', { firstName, lastName, email });
     
     // Basic validation
     if (!firstName || !lastName || !email) {
@@ -25,15 +28,39 @@ function goToPage3() {
         return;
     }
     
-    // Store form data (you can send this to your server)
-    const formData = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        timestamp: new Date().toISOString()
-    };
+    // Create hidden iframe for silent submission
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.name = 'hidden_iframe';
+    document.body.appendChild(iframe);
     
-    console.log('RSVP Data:', formData);
+    // Send to Google Sheets using form submission
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://script.google.com/macros/s/AKfycbzljxcv5X309KUu_58iZjIBn55RBYQmfeg3drsf74tEb9QBVcWORhay3cK9uKGrqjad/exec';
+    form.target = 'hidden_iframe';
+    form.style.display = 'none';
+    
+    // Add form fields
+    const fields = { firstName, lastName, email };
+    Object.keys(fields).forEach(key => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = fields[key];
+        form.appendChild(input);
+    });
+    
+    document.body.appendChild(form);
+    form.submit();
+    
+    // Clean up after submission
+    setTimeout(() => {
+        document.body.removeChild(form);
+        document.body.removeChild(iframe);
+    }, 1000);
+    
+    console.log('Form submitted to Google Sheets');
     
     // Transition to page 3
     const page2 = document.getElementById('page2');
@@ -42,7 +69,7 @@ function goToPage3() {
     page2.classList.remove('active');
     page3.classList.add('active');
     
-    // Trigger wax seal animation after a short delay
+    // Trigger wax seal animation
     setTimeout(() => {
         const waxSeal = document.getElementById('waxSeal');
         waxSeal.classList.add('animate');
