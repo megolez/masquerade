@@ -264,7 +264,7 @@ input::placeholder {
         max-height: 170px;
     }
     .wax-seal {
-        top: 15%;
+        top: 10%;
     }
 }
 
@@ -306,6 +306,6 @@ input::placeholder {
         max-height: 150px;
     }
     .wax-seal {
-        top: 18%;
+        top: 8%;
     }
 }
