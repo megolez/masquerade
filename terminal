@@ -1,0 +1,3 @@
+git add .
+git commit -m "Update web app URL and clean up page 3"
+git push origin main

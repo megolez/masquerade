@@ -37,7 +37,7 @@ function goToPage3() {
     // Send to Google Sheets using form submission
     const form = document.createElement('form');
     form.method = 'POST';
-    form.action = 'https://script.google.com/macros/s/AKfycbzljxcv5X309KUu_58iZjIBn55RBYQmfeg3drsf74tEb9QBVcWORhay3cK9uKGrqjad/exec';
+    form.action = 'https://script.google.com/macros/s/AKfycbzXqVoT34gcccE1qOMUdHZ--c-IySsbQTFt4kQx6gZcJaPuDuq0vgdIWgKdTvxr-O2D/exec';
     form.target = 'hidden_iframe';
     form.style.display = 'none';
     
@@ -68,12 +68,6 @@ function goToPage3() {
     
     page2.classList.remove('active');
     page3.classList.add('active');
-    
-    // Trigger wax seal animation
-    setTimeout(() => {
-        const waxSeal = document.getElementById('waxSeal');
-        waxSeal.classList.add('animate');
-    }, 500);
 }
 
 // Add enter key support for form
